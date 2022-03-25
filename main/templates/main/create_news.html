@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %} Publier un article sur le fil d'actualit&eacute;{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block container %}
+   <form method="POST" class="form-group col-lg-10 col-md-2 col-sd-2">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-success">Publier</button>
+   </form> 
+{% endblock %}

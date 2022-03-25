@@ -1,0 +1,210 @@
+<!--templates/base.html-->
+
+<!doctype html>
+<html lang="en">
+<head>
+   <style>
+    body, html {
+    height: 100%;
+}
+
+/* The hero image */
+.hero-image {
+  /* Use "linear-gradient" to add a darken background effect to the image (Liz-Hart-Black-bellied-pangolin-Phataginus-tetradactyla-Sangha-Lodge-Central-Africa-Republic.jpg). This will make the text easier to read */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/media/data/Liz-Hart-Black-bellied-pangolin-Phataginus-tetradactyla-Sangha-Lodge-Central-Africa-Republic.jpg");
+
+  /* Set a specific height */
+  height: 50%;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+
+.footer {
+  /* Use "linear-gradient" to add a darken background effect to the image (Liz-Hart-Black-bellied-pangolin-Phataginus-tetradactyla-Sangha-Lodge-Central-Africa-Republic.jpg). This will make the text easier to read */
+  background-color: black;
+
+  /* Set a specific height */
+  height: 30%;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+  
+
+
+/* Place text in the middle of the image */
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.main{
+   margin-left:160px;
+   margin-right:100px;
+   padding: 0px 10px;
+}
+
+  .footer {
+/* position: fixed; */
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+.footer-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.footer_space {
+  height: 100px;
+  opacity: 0.1;
+}
+
+  .login_register{
+  text-align: right;
+   margin-right:50px;
+  color: white;
+  }
+   </style>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Gabon Pangolin Working Group</title>
+</head>
+<body>
+
+<!--  header starts here-->
+ <div class="hero-image">
+    <div class="banner_logo"><img src='/media/data/gpwg.png' style="float: left; width: 150px; " alt="logo"></div>
+  <div class="hero-text">
+    <h1>Prot&eacute;geons nos pangolins</h1>
+    <p>Pr&eacute;s&eacute;rvons la biodiversit&eacute; gabonaise<p>
+    <p></p>
+    <button class="btn btn-outline-secondary my-2 my-sm-0" style="color: white;">Engagez vous maintenant</button>
+  </div>
+  <div class="login_register">
+	  {% if user.is_authenticated %}
+	  <p> {{user.username}} | <a href="/logout">Se d&eacute;connecter</a></p>	
+	  {% else %}
+	     <p><a href="/login">S'identifier</a> | <a href="/register">Creer un compte</a></p>
+	  {% endif%}
+  </div>
+</div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand" href="/">Gabon Pangolin Working Group</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Accueil<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Qu'est ce qu'un pangolin?</a>
+                    <div class="dropdown-menu">
+		    <a class="dropdown-item" href="/about">Qu'est ce qu'un pangolin?</a>
+                        <a class="dropdown-item" href="/threats">Menaces</a>
+                        <a class="dropdown-item" href="/conservation">Conservation</a>
+                        <a class="dropdown-item" href="/gabon">Au Gabon</a>
+                        <a class="dropdown-item" href="/faq">FAQ</a>
+                    </div>
+		</li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Notre action</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/actions">Notre action</a>
+                        <a class="dropdown-item" href="/pcp">Pangolin Champion Program</a>
+                        <a class="dropdown-item" href="/funds">Fonds pour l'aide aux pangolins</a>
+                        <a class="dropdown-item" href="/wpd">Journee mondiale du pangolin 2022</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/news">Actualit&eacute;</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Impliquez vous</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/help">Comment aider</a>
+                        <a class="dropdown-item" href="/resources">Ressources et activit&eacute;</a>
+			<a class="dropdown-item" href="/meet">Nous rencontrer</a>
+                        <a class="dropdown-item" href="/partners">Nos partenaires</a>
+                    </div>
+                </li>
+            </ul>
+<!--            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+</form> -->
+        </div>
+    </nav>
+
+<div id="content", name="content", class="main">
+    <div class="row justify-content-center">
+       <div class="col-lg-12 col-md-12 col-sd-12" >
+	   <div id="headtitle"><h1 class="mt-2" style="padding: 20px 100px; text-align: center;">{% block header %} {% endblock %}</h1>
+	   </div>
+	   <div class="add_note">
+		 {% block add_note %}
+		 {% endblock %}
+	   </div>
+
+	   <div class="container my-4">
+              <hr class="mt-0 mb-4" style="padding: 25px;">
+                  {% block container %}
+                  {% endblock %}
+           </div>
+	</div>
+     </div>
+</div>
+
+
+
+<div class="separator_space" style="height: 20px;"></div>
+ <div class="footer">
+  <div class="footer-text">
+    <p>Nos partenaires<p>
+  </div>
+    <div class="footer_logos">
+	    <img src='/media/data/20220225_154832.jpg' style="float: bottom; width: 120px; " alt="logo">
+    	    <img src='/media/data/20220225_155430.jpg' style="width: 80px; " alt="logo">
+</div>
+</div>
+
+<!-- jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
